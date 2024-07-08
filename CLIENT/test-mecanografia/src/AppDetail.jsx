@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useLocation, } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { LoginContainer } from "./components/SESSION/LoginContainer.jsx"
 import { SignupContainer } from "./components/SESSION/SignupContainer.jsx"
 import { useMenuContext } from "./Context/MenuContext.jsx"
@@ -10,10 +10,21 @@ import { UserListContainer } from "./components/LIST/USERS/UserListContainer.jsx
 import { CreateTestContainer } from "./components/CREATE/CreateTestContainer.jsx"
 import { HeaderContainer } from "./components/HEADER/HeaderContainer.jsx"
 import { HamburgerNavbar } from "./components/NAVBAR/HamburgerNavbar.jsx"
+import { useEffect } from 'react'
+import Axios from 'axios'
 export const AppDetail = () => {
-    const { openMenu } = useMenuContext()
+    const { openMenu, tab, filter } = useMenuContext()
     const location = useLocation();
     const showHeaderAndNavbar = !['/login', '/signup'].includes(location.pathname);
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        Axios.get("http://localhost:8080/api/users/logged-user")
+        .catch(error => {
+			error.response.status === 401 && navigate("/login")
+		})
+    }, [tab, filter])
+
     return (
         <>
             {
@@ -23,12 +34,12 @@ export const AppDetail = () => {
                 </div>
             }
             <div id="app-detail" className={openMenu ? "blur" : ""}>
-            {showHeaderAndNavbar && <HeaderContainer />}
-            {showHeaderAndNavbar && <NavbarContainer />}
-            <Routes>
-                <Route path='*' element={<Navigate to="/login" />} />
-                <Route path='/login' element={<LoginContainer />} />
-                <Route path='/signup' element={<SignupContainer />} />
+                {showHeaderAndNavbar && <HeaderContainer />}
+                {showHeaderAndNavbar && <NavbarContainer />}
+                <Routes>
+                    <Route path='*' element={<Navigate to="/login" />} />
+                    <Route path='/login' element={<LoginContainer />} />
+                    <Route path='/signup' element={<SignupContainer />} />
                     <Route path="/" element={<TestListContainer />} />
                     <Route path="/users" element={<UserListContainer />} />
                     <Route path="/user/:uid" element={<UserProfileContainer />} />

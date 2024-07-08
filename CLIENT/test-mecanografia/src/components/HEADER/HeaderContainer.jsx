@@ -13,7 +13,7 @@ export const HeaderContainer = () => {
 		Axios.get("http://localhost:8080/api/users/logged-user")
 		.then(res => setUser(res.data))
 		.catch(error => {
-			error.response.status === 401 && navigate("/login")
+			// error.response.status === 401 && navigate("/login")
 		})
 	}, [])
 
