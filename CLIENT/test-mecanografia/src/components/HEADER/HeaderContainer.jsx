@@ -10,15 +10,15 @@ export const HeaderContainer = () => {
     const [user, setUser] = useState({})
 	const navigate = useNavigate()
 	useEffect(() => {
-		Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
+		Axios.get("http://localhost:8080/api/users/logged-user")
 		.then(res => setUser(res.data))
 		.catch(error => {
-			error.response.status === 401 && navigate("/login")
+			// error.response.status === 401 && navigate("/login")
 		})
 	}, [])
 
     const logout = () => {
-        Axios.post("https://test-mecanografia-1.onrender.com/api/sessions/logout")
+        Axios.post("http://localhost:8080/api/sessions/logout")
         .then(res => {
             res.status == 200 && navigate("/login")
         })
