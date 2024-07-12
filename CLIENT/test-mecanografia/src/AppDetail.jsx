@@ -10,20 +10,37 @@ import { UserListContainer } from "./components/LIST/USERS/UserListContainer.jsx
 import { CreateTestContainer } from "./components/CREATE/CreateTestContainer.jsx"
 import { HeaderContainer } from "./components/HEADER/HeaderContainer.jsx"
 import { HamburgerNavbar } from "./components/NAVBAR/HamburgerNavbar.jsx"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Axios from 'axios'
+import { Loading } from './components/Loading.jsx'
 export const AppDetail = () => {
-    const { openMenu, tab, filter } = useMenuContext()
+    const { openMenu } = useMenuContext()
     const location = useLocation();
-    const showHeaderAndNavbar = !['/login', '/signup'].includes(location.pathname);
-
+    const showHeader = !['/login', '/signup'].includes(location.pathname)
+    const showNavbar = !['/login', '/signup'].includes(location.pathname) && !location.pathname.includes('/user/')
+    
     const navigate = useNavigate()
+
+    const [user, setUser] = useState({})
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
-        Axios.get("http://localhost:8080/api/users/logged-user")
-        .catch(error => {
-			error.response.status === 401 && navigate("/login")
-		})
-    }, [tab, filter])
+        if (location.pathname !== '/login' && location.pathname !== '/signup') {
+            Axios.get("http://localhost:8080/api/users/logged-user")
+                .then(res => {
+                    setUser(res.data);
+                })
+                .catch(error => {
+                    if (error.response.status === 401) {
+                        navigate("/login");
+                    }
+                })
+                .finally(() => setLoading(false))
+        }else{
+            setLoading(true)
+        }
+    }, [location.pathname]);
+
 
     return (
         <>
@@ -34,10 +51,10 @@ export const AppDetail = () => {
                 </div>
             }
             <div id="app-detail" className={openMenu ? "blur" : ""}>
-                {showHeaderAndNavbar && <HeaderContainer />}
-                {showHeaderAndNavbar && <NavbarContainer />}
+                {showHeader && !loading && <HeaderContainer user={user}/>}
+                {showNavbar && !loading && <NavbarContainer />}
                 <Routes>
-                    <Route path='*' element={<Navigate to="/login" />} />
+                    <Route path='*' element={<Navigate to="/" />} />
                     <Route path='/login' element={<LoginContainer />} />
                     <Route path='/signup' element={<SignupContainer />} />
                     <Route path="/" element={<TestListContainer />} />

@@ -1,29 +1,31 @@
 import { faA, faCircleCheck, faCirclePlus, faClock, faKeyboard, faMagnifyingGlass, faShuffle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useRandomContext } from "../../Context/RandomContext.jsx"
 import { useMenuContext } from "../../Context/MenuContext.jsx"
 
 export const NavbarContainer = () => {
     const {setWords, setTime, words, time} = useRandomContext()
-    const {setUsername, setTab, tab, setFilter, filter} = useMenuContext()
+    const {setUsername} = useMenuContext()
     const inputRef = useRef(null)
 
     const handleOnChange = (e) => {
         setUsername(e.target.value)
     }
+    
+    const location = useLocation()
     useEffect(() => {
         inputRef.current && inputRef.current.focus()
-    }, [tab])
+    }, [location.pathname])
 
     return (
         <div id='navbar'>
             <div id="nav-tab">
                 {
-                    tab != "random" &&
+                    !location.pathname.includes("/test/random") &&
                     <ul>
-                        <li className={filter == "create"? "nav-active": null} onClick={() => (setFilter("create"))}>
+                        <li className={location.pathname.includes("/create-test")? "nav-active": null}>
                             <Link to="/create-test">
                                 <FontAwesomeIcon icon={faCirclePlus} />
                                 <p>create</p>
@@ -32,13 +34,13 @@ export const NavbarContainer = () => {
                     </ul>
                 }
                 <ul>
-                    <li className={tab == "tests"? "nav-active":null} onClick={() => (setTab("tests"), setFilter(""))}>
+                    <li className={!["/test/random", "/test/random/words", "/test/random/time", "/users"].some(path => location.pathname.includes(path))? "nav-active":null}>
                         <Link to="/">
                             <FontAwesomeIcon icon={faKeyboard} />
                             <p>tests</p>
                         </Link>
                     </li>
-                    <li className={tab == "random"? "nav-active":null} onClick={() => (setTab("random"), setFilter("words"))}>
+                    <li className={location.pathname.includes("/test/random")? "nav-active":null}>
                         <Link to="/test/random/words">
                             <FontAwesomeIcon icon={faShuffle} />
                             <p>random</p>
@@ -46,15 +48,15 @@ export const NavbarContainer = () => {
                     </li>
                 </ul>
                 {
-                    tab == "random" &&
+                    location.pathname.includes("/test/random") &&
                     <ul>
-                        <li className={filter == "words"? "nav-active":null} onClick={() => (setFilter("words"))}>
+                        <li className={location.pathname.includes("/test/random/words")? "nav-active":null}>
                             <Link to="/test/random/words">
                                 <FontAwesomeIcon icon={faA} />
                                 <p>words</p>
                             </Link>
                         </li>
-                        <li className={filter == "time"? "nav-active":null} onClick={() => (setFilter("time"))}>
+                        <li className={location.pathname.includes("/test/random/time")? "nav-active":null}>
                             <Link to="/test/random/time">
                                 <FontAwesomeIcon icon={faClock} />
                                 <p>time</p>
@@ -63,7 +65,7 @@ export const NavbarContainer = () => {
                     </ul>
                 }
                 {
-                    (tab == "random" && filter == "words")?
+                    (location.pathname.includes("/test/random/words"))?
                     <ul>
                         <li className={words == 10? "nav-active" : ""} onClick={(() => setWords(10))}>10</li>
                         <li className={words == 25? "nav-active" : ""} onClick={(() => setWords(25))}>25</li>
@@ -74,7 +76,7 @@ export const NavbarContainer = () => {
                     null
                 }
                 {
-                    (tab == "random" && filter == "time")?
+                    (location.pathname.includes("/test/random/time"))?
                     <ul>
                         <li className={time == 15? "nav-active" : ""} onClick={() => setTime(15)}>15</li>
                         <li className={time == 30? "nav-active" : ""} onClick={() => setTime(30)}>30</li>
@@ -85,7 +87,7 @@ export const NavbarContainer = () => {
                     null
                 }
                 <ul>
-                    <li className={tab == "search"? "nav-active":null} onClick={() => (setTab("search"), setFilter(""))}>
+                    <li className={location.pathname.includes("/users")? "nav-active":null}>
                         <Link to="/users">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                             <p>search user</p>
@@ -93,7 +95,7 @@ export const NavbarContainer = () => {
                     </li>
                 </ul>
                 {
-                    tab == "search"?
+                    location.pathname.includes("/users")?
                     <input id="search" type="text" placeholder="username..." autoComplete="off" ref={inputRef} onChange={handleOnChange}/>
                     :
                     null

@@ -3,7 +3,7 @@ import { TestResults } from './TestResults.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 import { TestInfo } from './TestInfo.jsx'
-export const TestDetail = ({setNext, restart, words, tid, test, text, handleOnChange, userInput, inputRef, extraChars, wordIndex, className, results, isFinished, minutes, seconds}) => {
+export const TestDetail = ({setNext, restart, words, tid, cid, test, text, handleOnChange, userInput, inputRef, extraChars, wordIndex, className, results, isFinished, minutes, seconds}) => {
     return (
         <>
             {
@@ -15,7 +15,7 @@ export const TestDetail = ({setNext, restart, words, tid, test, text, handleOnCh
 
 
             {
-                !isFinished && words &&
+                !isFinished && cid && cid != "time" &&
                 <div id='time-and-words'>
                     <p id='word-counter'>{wordIndex}/{words}</p>
                     <div id='timer'>
@@ -25,7 +25,7 @@ export const TestDetail = ({setNext, restart, words, tid, test, text, handleOnCh
             }
 
             {
-                !isFinished && !words &&
+                !isFinished && cid && cid != "words" &&
                 <div id='timer'>
                     <p>{minutes < 10 ? '0' + minutes : minutes} : {seconds < 10 ? '0' + seconds : seconds}</p>
                 </div>

@@ -57,6 +57,10 @@ export const SignupContainer = () => {
                 <p>keySpeed</p>
             </div>
             <div id='signup-detail'>
+                <div id="responsive-logo">
+                    <img src="./logo-session.png" alt="" />
+                </div>
+                
                 <div id='signup-form-container'>
                     <div id='signup-header'>
                         <h1>register</h1>

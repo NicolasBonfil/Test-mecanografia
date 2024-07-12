@@ -13,7 +13,6 @@ export const LoginContainer = () => {
     })
 
     const handleOnChange = (e) => {
-        
         setErrors({})
         setFormData({
             ...formData,
@@ -28,7 +27,9 @@ export const LoginContainer = () => {
             withCredentials: true
         })
             .then(res => {
-                res.status == 200 && navigate("/")
+                if(res.status == 200){
+                    navigate("/")
+                }
             })
             .catch(error => {
                 const key = error.response.data.payload
@@ -51,10 +52,15 @@ export const LoginContainer = () => {
     return (
         <div id='login-container'>
             <div id='login-detail'>
+                <div id="responsive-logo">
+                    <img src="./logo-session.png" alt="" />
+                </div>
+                
                 <div id='login-form-container'>
                     <div id='login-header'>
                         <h1>login</h1>
                     </div>
+
                     <form id='login-form'>
                         <div className='login-input'>
                             <label>Correo o nombre de usuario</label>
@@ -69,14 +75,17 @@ export const LoginContainer = () => {
                             {errors.error && <p className='error-message'>{errors.error}</p>}
                         </div>
                     </form>
+
                     <button className='submit-btn' onClick={login}>Ingresar</button>
+
                     <p>¿No tienes una cuenta? <Link to='/signup'>Registrate</Link></p>
                 </div>
-
             </div>
+
             <div id='login-logo'>
-                <FontAwesomeIcon icon={faKeyboard} />
-                <p>keySpeed</p>
+                <img src="./logo-session.png" alt="" />
+                {/* <FontAwesomeIcon icon={faKeyboard} />
+                <p>keySpeed</p> */}
             </div>
 
         </div>
