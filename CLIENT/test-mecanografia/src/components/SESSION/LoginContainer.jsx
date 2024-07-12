@@ -53,7 +53,7 @@ export const LoginContainer = () => {
         <div id='login-container'>
             <div id='login-detail'>
                 <div id="responsive-logo">
-                    <img src="./logo-session.png" alt="" />
+                    <img src="./logo.png" alt="" />
                 </div>
                 
                 <div id='login-form-container'>
