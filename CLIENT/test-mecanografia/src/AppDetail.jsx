@@ -12,7 +12,6 @@ import { HeaderContainer } from "./components/HEADER/HeaderContainer.jsx"
 import { HamburgerNavbar } from "./components/NAVBAR/HamburgerNavbar.jsx"
 import { useEffect, useState } from 'react'
 import Axios from 'axios'
-import { Loading } from './components/Loading.jsx'
 export const AppDetail = () => {
     const { openMenu } = useMenuContext()
     const location = useLocation();
@@ -37,8 +36,15 @@ export const AppDetail = () => {
                 })
                 .finally(() => setLoading(false))
         }else{
-            navigate("/")
-            setLoading(true)
+            Axios.get("http://localhost:8080/api/users/logged-user")
+            .then(res => {
+                if(res.status === 200){
+                    setUser(res.data)
+                    setLoading(false) 
+                    navigate("/")
+                }
+            })
+            .catch((error) => error.response.status === 401 && setLoading(true))
         }
     }, [location.pathname]);
 

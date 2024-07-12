@@ -52,21 +52,20 @@ export const UserListContainer = () => {
 
     return (
         <>
+        <div id='users-list-container'>
+            <div className='username-filter'>
+                <p>Search:</p>
+                <input type="text" placeholder='username...' onChange={(e) => setUsername(e.target.value)} />
+            </div>
             {
                 loading?
                     <Loading/>
                 :
-                <div id='users-list-container'>
-                    <div className='username-filter'>
-                        <p>Search:</p>
-                        <input type="text" placeholder='username...' onChange={(e) => setUsername(e.target.value)} />
-                    </div>
                     <div id='users-list-detail'>
                         <UserListDetail users={users} favouriteUsers={favouriteUsers} handleFavourite={handleFavourite} />
                     </div>
-                </div>
             }
-        
+        </div>
         </>
     )
 }
