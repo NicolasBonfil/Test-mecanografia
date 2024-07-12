@@ -53,12 +53,11 @@ export const SignupContainer = () => {
     return (
         <div id='signup-container'>
             <div id='signup-logo'>
-                <FontAwesomeIcon icon={faKeyboard} />
-                <p>keySpeed</p>
+                <img src="./logo-session.png" alt="" />
             </div>
             <div id='signup-detail'>
                 <div id="responsive-logo">
-                    <img src="./logo-session.png" alt="" />
+                    <img src="./logo.png" alt="" />
                 </div>
                 
                 <div id='signup-form-container'>

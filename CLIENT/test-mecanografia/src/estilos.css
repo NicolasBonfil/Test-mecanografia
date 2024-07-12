@@ -87,7 +87,6 @@
 #login-container,
 #signup-container {
     display: flex;
-    /* flex-grow: 1; */
     height: 100%;
 }
 
@@ -99,7 +98,7 @@
     justify-content: center;
     height: 100%;
     width: 60%;
-    background-color: rgb(60, 60, 60);
+    background-color: #292a2fd8;
 }
 
 #login-form-container,
@@ -115,7 +114,6 @@
 }
 
 #responsive-logo{
-    height: 12%;
     display: none;
 }
 
@@ -162,6 +160,7 @@
     position: absolute;
     top: 44%;
     right: 2%;
+    color: black;
 }
 
 .submit-btn {
@@ -202,16 +201,17 @@
 /* HEADER */
 
 header {
-    height: 13vh;
+    height: 9vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 70px 0px 70px;
+    margin-bottom: 25px;
 }
 
 #logo-container{
-    height: 100%;
+    height: 95%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -980,7 +980,8 @@ body.no-scroll {
         background-color: RGB(60, 60, 60);
         padding: 25px 50px 0px 50px;
         height: 9vh;
-        margin-bottom: 9px;
+        margin-bottom: 20px;
+        align-items: center;
     }
 
     #logo-container{
@@ -1028,35 +1029,35 @@ body.no-scroll {
     
     #login-detail, #signup-detail{
         width: 100%;
-        padding: 1% 0%;
-        background-color: rgba(0, 0, 0, 0.5);
+        padding: 2.5% 0% 5% 0%;
+        row-gap: 8%;
     }
     
     #responsive-logo{
         display: flex;
+        height: 9.5%;
     }
 
     #login-form-container, #signup-form-container{
-        height: 84%;
+        flex-grow: 1;
         overflow: hidden;
         padding: 0px;
-        background-color: transparent;
-        color: white;
         padding: 0px;
+        width: 40%;
+        background-color: rgb(255, 255, 255);
     }
 
-    #login-form-container a, #signup-form-container a{
-        color: white;
+    #login-form, #signup-form{
+        margin-bottom: 38px;
     }
 
-    #login-form-container svg, #signup-form-container svg{
-        color: black;
-        top: 40%;
+    .login-input svg, .signup-input svg{
+        top: 45%;
+        font-size: 14.5px;
     }
 
     .login-input,
     .signup-input {
-        row-gap: 2px;
         height: 60px;
     }
 
@@ -1067,13 +1068,16 @@ body.no-scroll {
 
     .login-input input,
     .signup-input input {
-        border: 3px solid rgba(190, 139, 31, 0.5);
         padding: 2px;
     }
 
     .submit-btn:hover{
         background-color: #be8c1f9a;
         color: white;
+    }
+    
+    #login-header, #signup-header{
+        display: none;
     }
 
     /* TEST-LIST // USER-LIST */
@@ -1239,6 +1243,30 @@ body.no-scroll {
 }
 
 @media (max-width: 870px) {
+    /* LOGIN // SIGNUP */
+
+    #login-form-container, #signup-form-container{
+        width: 62%;
+    }
+
+    #login-form-container p, #signup-form-container p{
+        font-size: 13px;
+    }
+
+    #login-form, #signup-form{
+        row-gap: 15px;
+        margin-bottom: 32px;
+    }
+
+    #responsive-logo{
+        height: 9%;
+    }
+
+    #login-detail, #signup-detail{
+        padding-top: 5.5%;
+        margin-bottom: 10%;
+    }
+
     /* USER-PROFILE */
     #user-favourites {
         display: flex;
@@ -1292,7 +1320,7 @@ body.no-scroll {
 
     /* HEADER */
     header {
-        padding: 13px 13px 0px 13px;
+        padding: 25px 19px 0px 19px;
     }
 
     #user-button {
@@ -1405,9 +1433,43 @@ body.no-scroll {
 @media (max-width: 590px) {
     /* LOGIN // SIGNUP */
 
-    #login-form-container,
-    #signup-form-container {
-        width: 93%;
+    #login-form-container, #signup-form-container{
+        width: 75%;
+    }
+
+    #login-form, #signup-form{
+        row-gap: 35px;
+        margin-bottom: 50px;
+    }
+
+    .login-input,
+    .signup-input {
+        row-gap: 6px;
+        height: 40px;
+    }
+
+    .login-input svg,
+    .signup-input svg{
+        top: 65%;
+    }
+
+    .login-input label,
+    .signup-input label{
+        font-size: 12px;
+    }
+
+    .login-input input,
+    .signup-input input {
+        padding: 1.4px;
+    }
+
+    #responsive-logo{
+        height: 8.8%;
+    }
+
+    #login-detail, #signup-detail{
+        padding-top: 7.5%;
+        padding-bottom: 10.5%;
     }
 
     /* TEST-LIST // USER-LIST */
