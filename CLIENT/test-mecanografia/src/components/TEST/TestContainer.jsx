@@ -4,9 +4,12 @@ import { TestDetail } from './TestDetail.jsx'
 import { faker } from '@faker-js/faker';
 import { useParams } from 'react-router-dom';
 import { useRandomContext } from "../../Context/RandomContext.jsx"
+import { Loading } from '../Loading.jsx';
 
 export const TestContainer = () => {
     const {tid, cid} = useParams()
+
+    const [loading, setLoading] = useState(false)
 
     const {time, setTime, words, setWords} = useRandomContext()
 
@@ -144,6 +147,7 @@ export const TestContainer = () => {
                     })
                     setText(res.data.text.split(" "))
                 })
+                .finally(() => setLoading(false))
         } else if (cid == "words") {
             const text = []
             for (let i = 0; i < words; i++) {
@@ -190,7 +194,6 @@ export const TestContainer = () => {
             return "missed"
         }
     }
-
     const handleOnChange = (e) => {
         !isStarted && setIsStarted(true)
         let user_input = e.target.value
@@ -307,38 +310,45 @@ export const TestContainer = () => {
 
     return (
         <>
-            <div id='test-container'>
-                <div id='test-detail'>
-                    <div className='test-filter'>
-                        {
-                            cid == "words" &&
-                            <>
-                                <p>Words</p>
-                                <select value={words} onChange={(e) => setWords(e.target.value)}>
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="75">75</option>
-                                </select>
-                            </>
-                        }
-                        {
-                            cid == "time" &&
-                            <>
-                                <p>TIme</p>
-                                <select value={time} onChange={(e) => setTime(e.target.value)}>
-                                    <option value="15">15''</option>
-                                    <option value="30">30''</option>
-                                    <option value="60">60''</option>
-                                    <option value="120">120''</option>
-                                </select>
-                            </>
-                        }
+            {
+                loading?
+                    <Loading/>
+                :
+                    <>
+                        <div id='test-container'>
+                            <div id='test-detail'>
+                                <div className='test-filter'>
+                                    {
+                                        cid == "words" &&
+                                        <>
+                                            <p>Words</p>
+                                            <select value={words} onChange={(e) => setWords(e.target.value)}>
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="75">75</option>
+                                            </select>
+                                        </>
+                                    }
+                                    {
+                                        cid == "time" &&
+                                        <>
+                                            <p>TIme</p>
+                                            <select value={time} onChange={(e) => setTime(e.target.value)}>
+                                                <option value="15">15''</option>
+                                                <option value="30">30''</option>
+                                                <option value="60">60''</option>
+                                                <option value="120">120''</option>
+                                            </select>
+                                        </>
+                                    }
 
-                    </div>
-                    <TestDetail setNext={setNext} restart={restart} words={words} tid={tid} test={test} text={text} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} extraChars={extraChars} wordIndex={wordIndex} className={className} results={results} isFinished={isFinished} minutes={minutes} seconds={seconds} />
-                </div>
-            </div>
+                                </div>
+                                <TestDetail setNext={setNext} restart={restart} words={words} tid={tid} cid={cid} test={test} text={text} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} extraChars={extraChars} wordIndex={wordIndex} className={className} results={results} isFinished={isFinished} minutes={minutes} seconds={seconds} />
+                            </div>
+                        </div>
+                    </>
+            }
         </>
     )
 }

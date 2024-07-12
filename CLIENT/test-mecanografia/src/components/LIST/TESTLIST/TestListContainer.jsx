@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import Axios from "axios"
 import { TestListDetail } from "./TestListDetail.jsx"
+import { Loading } from "../../Loading.jsx"
 
 export const TestListContainer = () => {
     const [tests, setTests] = useState([])
     const [favouriteTests, setFavouriteTests] = useState([])
 
+    const [loading, setLoading] = useState(true)
+ 
     useEffect(() => {
         Axios.get("https://test-mecanografia-1.onrender.com/api/tests")
         .then((res) => {
@@ -28,6 +31,7 @@ export const TestListContainer = () => {
                 public_tests = public_tests.filter(t => t.owner.username !== user.username)
                 setTests(public_tests)
             })
+            .finally(() => setLoading(false))
         })
     }, [])
 
@@ -42,11 +46,17 @@ const handleFavourite = (action, id) => {
 
 return (
     <>
-        <div id="tests-list-container">
-            <div id="tests-list-detail">
-                <TestListDetail tests={tests} favouriteTests={favouriteTests} handleFavourite={handleFavourite} />
-            </div>
-        </div>
+        {
+            loading?
+                <Loading/>
+            :
+
+                <div id="tests-list-container">
+                    <div id="tests-list-detail">
+                        <TestListDetail tests={tests} favouriteTests={favouriteTests} handleFavourite={handleFavourite} />
+                    </div>
+                </div>
+        }
     </>
 )
 }

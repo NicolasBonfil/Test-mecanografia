@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import Axios from "axios"
 import { UserProfileDetail } from './UserProfileDetail.jsx'
 import { useParams } from 'react-router-dom'
+import { Loading } from '../Loading.jsx'
+import { HeaderContainer } from '../HEADER/HeaderContainer.jsx'
 
 export const UserProfileContainer = () => {
     const [profileUser, setPorfileUser] = useState({
@@ -10,6 +12,8 @@ export const UserProfileContainer = () => {
         favourite_tests: [],
         favourite_users: []
     })
+
+    const [loading, setLoading] = useState(true)
 
     const {uid} = useParams()
 
@@ -46,15 +50,21 @@ export const UserProfileContainer = () => {
                     favourite_users: favourite_users
                 })
             })
+            .finally(() => setLoading(false))
     }, [uid])
 
     return (
         <>
-            <div id='user-profile-container'>
-                <div id='user-profile-detail'>
-                    <UserProfileDetail profileUser={profileUser}/>
-                </div>
-            </div>
+            {   
+                loading?
+                    <Loading/>
+                :
+                    <div id='user-profile-container'>
+                        <div id='user-profile-detail'>
+                            <UserProfileDetail profileUser={profileUser}/>
+                        </div>
+                    </div>
+            }
         </>
     )
 }

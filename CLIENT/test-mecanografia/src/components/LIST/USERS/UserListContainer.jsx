@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import Axios from "axios"
 import { UserListDetail } from './UserListDetail.jsx'
 import { useMenuContext } from '../../../Context/MenuContext.jsx'
+import { Loading } from '../../Loading.jsx'
 
 export const UserListContainer = () => {
     const [users, setUsers] = useState([])
     const [favouriteUsers, setFavouriteUsers] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const {username, setUsername} = useMenuContext()
 
@@ -33,6 +35,7 @@ export const UserListContainer = () => {
                             setUsers(allUsers)
                         }
                     })
+                    .finally(() => setLoading(false))
             })
     }, [username])
 
@@ -47,14 +50,22 @@ export const UserListContainer = () => {
     }
 
     return (
-        <div id='users-list-container'>
-            <div className='username-filter'>
-                <p>Search:</p>
-                <input type="text" placeholder='username...' onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div id='users-list-detail'>
-                <UserListDetail users={users} favouriteUsers={favouriteUsers} handleFavourite={handleFavourite} />
-            </div>
-        </div>
+        <>
+            {
+                loading?
+                    <Loading/>
+                :
+                <div id='users-list-container'>
+                    <div className='username-filter'>
+                        <p>Search:</p>
+                        <input type="text" placeholder='username...' onChange={(e) => setUsername(e.target.value)} />
+                    </div>
+                    <div id='users-list-detail'>
+                        <UserListDetail users={users} favouriteUsers={favouriteUsers} handleFavourite={handleFavourite} />
+                    </div>
+                </div>
+            }
+        
+        </>
     )
 }

@@ -6,8 +6,7 @@ import Axios from "axios"
 import { ProfileNavbar } from '../NAVBAR/ProfileNavbar.jsx'
 import { useMenuContext } from '../../Context/MenuContext.jsx'
 
-export const HeaderContainer = () => {
-    const [user, setUser] = useState({})
+export const HeaderContainer = ({user}) => {
 	const navigate = useNavigate()
 	useEffect(() => {
 		Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
@@ -20,12 +19,11 @@ export const HeaderContainer = () => {
     const logout = () => {
         Axios.post("https://test-mecanografia-1.onrender.com/api/sessions/logout")
         .then(res => {
-            res.status == 200 && navigate("/login")
+            res.status == 200 && navigate("/login") 
         })
     }
 
     const [showNav, setShowNav] = useState(false)
-
     const {handleMenuClick} = useMenuContext()
 
     return (
@@ -36,8 +34,7 @@ export const HeaderContainer = () => {
             
             <div id='logo-container'>
                 <Link to="/">
-                    <FontAwesomeIcon id="logo" icon={faKeyboard}/>
-                    <p>keySpeed</p>
+                    <img src="./logo.png" alt="" />
                 </Link>
             </div>
 

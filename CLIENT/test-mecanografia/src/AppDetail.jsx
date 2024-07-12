@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useLocation, } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { LoginContainer } from "./components/SESSION/LoginContainer.jsx"
 import { SignupContainer } from "./components/SESSION/SignupContainer.jsx"
 import { useMenuContext } from "./Context/MenuContext.jsx"
@@ -10,10 +10,38 @@ import { UserListContainer } from "./components/LIST/USERS/UserListContainer.jsx
 import { CreateTestContainer } from "./components/CREATE/CreateTestContainer.jsx"
 import { HeaderContainer } from "./components/HEADER/HeaderContainer.jsx"
 import { HamburgerNavbar } from "./components/NAVBAR/HamburgerNavbar.jsx"
+import { useEffect, useState } from 'react'
+import Axios from 'axios'
+import { Loading } from './components/Loading.jsx'
 export const AppDetail = () => {
     const { openMenu } = useMenuContext()
     const location = useLocation();
-    const showHeaderAndNavbar = !['/login', '/signup'].includes(location.pathname);
+    const showHeader = !['/login', '/signup'].includes(location.pathname)
+    const showNavbar = !['/login', '/signup'].includes(location.pathname) && !location.pathname.includes('/user/')
+    
+    const navigate = useNavigate()
+
+    const [user, setUser] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        if (location.pathname !== '/login' && location.pathname !== '/signup') {
+            Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
+                .then(res => {
+                    setUser(res.data);
+                })
+                .catch(error => {
+                    if (error.response.status === 401) {
+                        navigate("/login");
+                    }
+                })
+                .finally(() => setLoading(false))
+        }else{
+            setLoading(true)
+        }
+    }, [location.pathname]);
+
+
     return (
         <>
             {
@@ -23,12 +51,12 @@ export const AppDetail = () => {
                 </div>
             }
             <div id="app-detail" className={openMenu ? "blur" : ""}>
-            {showHeaderAndNavbar && <HeaderContainer />}
-            {showHeaderAndNavbar && <NavbarContainer />}
-            <Routes>
-                <Route path='*' element={<Navigate to="/login" />} />
-                <Route path='/login' element={<LoginContainer />} />
-                <Route path='/signup' element={<SignupContainer />} />
+                {showHeader && !loading && <HeaderContainer user={user}/>}
+                {showNavbar && !loading && <NavbarContainer />}
+                <Routes>
+                    <Route path='*' element={<Navigate to="/" />} />
+                    <Route path='/login' element={<LoginContainer />} />
+                    <Route path='/signup' element={<SignupContainer />} />
                     <Route path="/" element={<TestListContainer />} />
                     <Route path="/users" element={<UserListContainer />} />
                     <Route path="/user/:uid" element={<UserProfileContainer />} />

@@ -22,7 +22,8 @@
 #app-detail{
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    height: 100%;
 }
 
 .error-message {
@@ -65,19 +66,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    row-gap: 50px;
+    background-color: transparent;
+    row-gap: 30px;
 }
 
 .loading .spinner {
-    width: 130px;
-    height: 130px;
+    width: 70px;
+    height: 70px;
+    font-weight: 100;
     color: #be8c1f8a;
 }
 
 .loading h1 {
     color: #9d6f0b;
-    font-size: 22px;
+    font-size: 17px;
 }
 
 /* LOGIN // SIGNUP */
@@ -85,7 +87,8 @@
 #login-container,
 #signup-container {
     display: flex;
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    height: 100%;
 }
 
 #login-detail,
@@ -109,6 +112,16 @@
     width: 60%;
     height: 90%;
     padding: 25px;
+}
+
+#responsive-logo{
+    height: 12%;
+    display: none;
+}
+
+#responsive-logo img{
+    max-height: 100%;
+    width: auto;
 }
 
 #login-header,
@@ -151,6 +164,23 @@
     right: 2%;
 }
 
+.submit-btn {
+    padding: 10px 15px;
+    background-color: #be8c1f9a;
+    color: black;
+    border-radius: 10px;
+    font-weight: 800;
+    border: 0px;
+    width: 150px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: black;
+    color: #be8c1f9a;
+}
+
 #login-logo,
 #signup-logo {
     width: 40%;
@@ -165,25 +195,8 @@
     row-gap: 5px;
 }
 
-#login-logo svg,
-#signup-logo svg {
-    font-size: 65px;
-}
-
-.submit-btn {
-    padding: 10px 15px;
-    background-color: #be8c1f9a;
-    color: black;
-    border-radius: 10px;
-    font-weight: 800;
-    border: 0px;
-    width: 150px;
-    margin-bottom: 25px;
-}
-
-.submit-btn:hover {
-    background-color: black;
-    color: #be8c1f9a;
+#login-logo img, #signup-logo img{
+    height: 25%;
 }
 
 /* HEADER */
@@ -197,6 +210,13 @@ header {
     padding: 20px 70px 0px 70px;
 }
 
+#logo-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #logo-container a {
     display: flex;
     align-items: center;
@@ -204,12 +224,12 @@ header {
     font-size: 30px;
     text-decoration: none;
     column-gap: 10px;
+    height: 100%;
 }
 
-#logo-container a p {
-    color: white;
-    font-weight: 600;
-    font-size: 33px;
+#logo-container img{
+    max-height: 100%;
+    width: auto;
 }
 
 #user-button {
@@ -304,19 +324,16 @@ header {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding-top: 120px;
     pointer-events: all;
     z-index: 5;
 }
 
 #hamburger-menu {
-    height: 55vh;
-    width: 290px;
     background-color: rgb(40, 40, 40);
     position: absolute;
-    border-radius: 10px;
-    border: 3px solid rgb(20, 20, 20);
-    ;
+    border-radius: 8.5px;
+    border: 3px solid rgba(20, 20, 20, 0.3);
     z-index: 10;
 }
 
@@ -334,7 +351,7 @@ body.no-scroll {
     height: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 12px 7px;
 }
 
 #hamburger-nav-tab {
@@ -342,18 +359,18 @@ body.no-scroll {
     flex-direction: column;
     row-gap: 5%;
     height: 100%;
-    width: 90%;
+    width: 220px;
     justify-content: center;
 }
 
 #hamburger-nav-tab ul{
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 9px;
 }
 
 .nav-btn {
-    border-radius: 5px;
+    border-radius: 8.5px;
     border: 0px;
     color: #9d6f0b;
     font-weight: 900;
@@ -361,7 +378,7 @@ body.no-scroll {
     list-style-type: none;
     color: #9d6f0b;
     background-color: rgb(45, 45, 45);
-    height: 45px;
+    height: 35px;
 }
 
 .nav-btn a{
@@ -960,26 +977,23 @@ body.no-scroll {
     /* HEADER */
 
     header {
-        display: grid;
-        grid-template-columns: 25% 50% 25%;
-        height: 15vh;
         background-color: RGB(60, 60, 60);
-        padding: 25px 35px 0px 35px;
+        padding: 25px 50px 0px 50px;
+        height: 9vh;
+        margin-bottom: 9px;
     }
 
-    header #logo-container {
-        display: flex;
-        align-items: center;
+    #logo-container{
         justify-content: center;
-        height: 100%;
+        width: 50%;
+    }
+
+    #user-button{
+        width: 25%;
     }
 
     .profile-navbar {
         width: 121px;
-    }
-
-    #logo-container a svg, #logo-container a p{
-        font-size: 27px;
     }
 
     #username{
@@ -996,6 +1010,7 @@ body.no-scroll {
 
     #hamburger-menu-icon {
         display: flex;
+        width: 25%;
     }
 
     #hamburger-menu-icon svg {
@@ -1005,41 +1020,60 @@ body.no-scroll {
     }
 
     /* LOGIN // SIGNUP */
-
+    
     #login-logo,
     #signup-logo {
         display: none;
     }
-
-    #login-detail,
-    #signup-detail {
+    
+    #login-detail, #signup-detail{
         width: 100%;
-        height: 100%;
+        padding: 1% 0%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    #responsive-logo{
+        display: flex;
     }
 
-    #login-form-container,
-    #signup-form-container {
-        height: 90%;
-        width: 60%;
-        padding: 5px;
+    #login-form-container, #signup-form-container{
+        height: 84%;
+        overflow: hidden;
+        padding: 0px;
+        background-color: transparent;
+        color: white;
+        padding: 0px;
+    }
+
+    #login-form-container a, #signup-form-container a{
+        color: white;
+    }
+
+    #login-form-container svg, #signup-form-container svg{
+        color: black;
+        top: 40%;
     }
 
     .login-input,
     .signup-input {
-        row-gap: 3px;
-        height: 70px;
+        row-gap: 2px;
+        height: 60px;
+    }
+
+    .login-input label,
+    .signup-input label{
+        font-size: 13px;
     }
 
     .login-input input,
     .signup-input input {
-        padding: 3px;
+        border: 3px solid rgba(190, 139, 31, 0.5);
+        padding: 2px;
     }
 
-    .login-input svg,
-    .signup-input svg {
-        top: 42%;
-        right: 2%;
-        font-size: 15px;
+    .submit-btn:hover{
+        background-color: #be8c1f9a;
+        color: white;
     }
 
     /* TEST-LIST // USER-LIST */
@@ -1163,6 +1197,10 @@ body.no-scroll {
 
     /* USER-PROFILE */
 
+    #user-profile-container{
+        padding: 13px;
+    }
+
     #user-texts-container,
     #user-favourites .tests,
     #user-favourites .users {
@@ -1254,8 +1292,7 @@ body.no-scroll {
 
     /* HEADER */
     header {
-        grid-template-columns: 10% 80% 10%;
-        padding: 25px 10px 0px 23px;
+        padding: 13px 13px 0px 13px;
     }
 
     #user-button {
@@ -1275,10 +1312,6 @@ body.no-scroll {
     #username p,
     .profile-navbar {
         display: none;
-    }
-
-    #logo-container a svg, #logo-container a p{
-        font-size: 25px;
     }
 
     /* PROFILE-NAVBAR */
@@ -1374,7 +1407,6 @@ body.no-scroll {
 
     #login-form-container,
     #signup-form-container {
-        height: 93%;
         width: 93%;
     }
 

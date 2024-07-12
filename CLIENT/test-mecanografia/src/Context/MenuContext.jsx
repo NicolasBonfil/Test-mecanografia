@@ -33,10 +33,8 @@ export const MenuContextProvider = ({children}) => {
         setOpenMenu(!openMenu);
     }
 
-    const [tab, setTab] = useState("")
-    const [filter, setFilter] = useState("")
-
     const [username, setUsername] = useState("")
+
     return(
         <MenuContext.Provider
             value={{
@@ -47,10 +45,6 @@ export const MenuContextProvider = ({children}) => {
                 setOpenMenu,
                 username,
                 setUsername,
-                tab,
-                setTab,
-                filter,
-                setFilter
             }}
         >
             {children}
