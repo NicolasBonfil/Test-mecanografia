@@ -37,6 +37,7 @@ export const AppDetail = () => {
                 })
                 .finally(() => setLoading(false))
         }else{
+            navigate("/")
             setLoading(true)
         }
     }, [location.pathname]);
