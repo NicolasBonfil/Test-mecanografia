@@ -28,7 +28,7 @@ export const AppDetail = () => {
         if (location.pathname !== '/login' && location.pathname !== '/signup') {
             Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
                 .then(res => {
-                    setUser(res.data);
+                    setUser(res.data)
                 })
                 .catch(error => {
                     if (error.response.status === 401) {
@@ -37,6 +37,7 @@ export const AppDetail = () => {
                 })
                 .finally(() => setLoading(false))
         }else{
+            navigate("/")
             setLoading(true)
         }
     }, [location.pathname]);
