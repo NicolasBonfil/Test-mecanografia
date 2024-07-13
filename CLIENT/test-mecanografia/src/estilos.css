@@ -659,6 +659,7 @@ body.no-scroll {
 
 #test-data h1 {
     font-size: 45px;
+    color: white;
 }
 
 #test-data p {
@@ -679,6 +680,7 @@ body.no-scroll {
     justify-content: center;
     font-size: 23px;
     font-weight: 500;
+    color: white;
 }
 
 #timer {
@@ -1071,7 +1073,7 @@ body.no-scroll {
 
     .login-input input,
     .signup-input input {
-        padding: 2px;
+        padding: 3px;
     }
 
     .submit-btn:hover{
@@ -1453,17 +1455,12 @@ body.no-scroll {
 
     .login-input svg,
     .signup-input svg{
-        top: 65%;
+        top: 70%;
     }
 
     .login-input label,
     .signup-input label{
         font-size: 12px;
-    }
-
-    .login-input input,
-    .signup-input input {
-        padding: 1.4px;
     }
 
     #responsive-logo{
