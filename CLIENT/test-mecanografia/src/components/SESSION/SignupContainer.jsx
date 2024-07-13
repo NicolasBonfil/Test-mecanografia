@@ -26,7 +26,7 @@ export const SignupContainer = () => {
     const navigate = useNavigate()
 
     const register = () => {
-        Axios.post("https://test-mecanografia-1.onrender.com/api/sessions/register", formData)
+        Axios.post("http://localhost:8080/api/sessions/register", formData)
         .then((res) => {
             res.status == 200 && navigate("/login")
         })

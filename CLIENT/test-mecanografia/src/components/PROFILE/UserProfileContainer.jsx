@@ -18,7 +18,7 @@ export const UserProfileContainer = () => {
     const {uid} = useParams()
 
     useEffect(() => {
-        Axios.get(`https://test-mecanografia-1.onrender.com/api/users/${uid}`)
+        Axios.get(`http://localhost:8080/api/users/${uid}`)
             .then(res => {
                 return res.data
             })
