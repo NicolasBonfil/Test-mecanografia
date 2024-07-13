@@ -36,7 +36,7 @@ export const AppDetail = () => {
                 })
                 .finally(() => setLoading(false))
         }else{
-            Axios.get("http://localhost:8080/api/users/logged-user")
+            Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
             .then(res => {
                 if(res.status === 200){
                     setUser(res.data)
