@@ -137,7 +137,7 @@ export const TestContainer = () => {
     useEffect(() => {
         if (tid) {
             setLoading(true)
-            Axios.get(`http://localhost:8080/api/tests/${tid}`)
+            Axios.get(`https://test-mecanografia-1.onrender.com/api/tests/${tid}`)
             .then(res => {
                     setTest({
                         ...res.data,
@@ -273,7 +273,7 @@ export const TestContainer = () => {
         if ((results.time.minutes > 0 || results.time.seconds > 0) && tid) {
             const completed_test = test
             completed_test.results = results
-            Axios.put("http://localhost:8080/api/users/completed-test", completed_test)
+            Axios.put("https://test-mecanografia-1.onrender.com/api/users/completed-test", completed_test)
         }
     }, [results])
 
