@@ -8,7 +8,7 @@ export const ProfileDetails = ({profileUser}) => {
                 <FontAwesomeIcon icon={faCircleUser} />
                 <div>
                     <p>{profileUser.username}</p>
-                    <p>joined {profileUser.date}</p>
+                    <p>joined {profileUser.joined}</p>
                 </div>
             </div>
             <div id='user-stats'>
@@ -21,7 +21,6 @@ export const ProfileDetails = ({profileUser}) => {
                     <p className='value'>{profileUser.texts.length}</p>
                 </div>
             </div>
-            <div></div>
         </>
     )
 }

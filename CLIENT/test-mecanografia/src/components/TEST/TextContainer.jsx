@@ -1,4 +1,10 @@
+import { useEffect } from "react"
+
 export const TextContainer = ({handleOnChange, userInput, inputRef, text, extraChars, wordIndex, className}) => {
+    useEffect(() => {
+        document.activeElement !== inputRef.current && inputRef.current.focus()
+    }, [text])
+
     return (
         <>
             <input id="user-input" type="text" onChange={handleOnChange} value={userInput} autoComplete='off' ref={inputRef} />
