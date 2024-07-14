@@ -10,12 +10,12 @@ export const TestListContainer = () => {
     const [loading, setLoading] = useState(true)
  
     useEffect(() => {
-        Axios.get("https://test-mecanografia-1.onrender.com/api/tests")
+        Axios.get("http://localhost:8080/api/tests")
         .then((res) => {
             return res.data
         })
         .then(allTests => {
-            Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
+            Axios.get("http://localhost:8080/api/users/logged-user")
             .then(res => {
                 const user = res.data
                 let favourite_tests = []
@@ -41,7 +41,7 @@ const handleFavourite = (action, id) => {
 
     setFavouriteTests(favourite_tests)
 
-    action == "add" ? Axios.put("https://test-mecanografia-1.onrender.com/api/users/add-favourite/tests", { id }) : Axios.put("https://test-mecanografia-1.onrender.com/api/users/remove-favourite/tests", { id })
+    action == "add" ? Axios.put("http://localhost:8080/api/users/add-favourite/tests", { id }) : Axios.put("http://localhost:8080/api/users/remove-favourite/tests", { id })
 }
 
 return (

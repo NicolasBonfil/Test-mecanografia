@@ -25,7 +25,7 @@ export const AppDetail = () => {
 
     useEffect(() => {
         if (location.pathname !== '/login' && location.pathname !== '/signup') {
-            Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
+            Axios.get("http://localhost:8080/api/users/logged-user")
                 .then(res => {
                     setUser(res.data)
                 })

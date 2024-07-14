@@ -23,7 +23,7 @@ export const CreateTestContainer = () => {
     const navigate = useNavigate()
 
     const createTest = (state) => {
-        Axios.post(`https://test-mecanografia-1.onrender.com/api/tests`, {formData, state})
+        Axios.post(`http://localhost:8080/api/tests`, {formData, state})
         .then(res => {
             res.status == 200 && navigate("/")
         })

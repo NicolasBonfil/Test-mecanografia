@@ -658,7 +658,7 @@ body.no-scroll {
 }
 
 #test-data h1 {
-    font-size: 45px;
+    font-size: 41px;
     color: white;
 }
 
@@ -666,7 +666,8 @@ body.no-scroll {
     font-size: 15px;
     margin-top: 12px;
     padding-left: 3px;
-    color: #646669;
+    color: #999b9f;
+    font-weight: 500;
 }
 
 #test-data p a {
@@ -764,6 +765,9 @@ body.no-scroll {
     flex-wrap: wrap;
     width: 70%;
     position: relative;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border: 2.5px solid black;
 }
 
 #user-input {
@@ -786,6 +790,7 @@ body.no-scroll {
     margin-right: 5px;
     display: flex;
     color: #646669;
+    font-weight: 600;
 }
 
 .correct {
@@ -834,7 +839,7 @@ body.no-scroll {
 
 .result p {
     font-weight: 600;
-    color: #000000b9;
+    color: white;
 }
 
 /* USER-PROFILE */
@@ -849,7 +854,7 @@ body.no-scroll {
     background-color: #2c2e319a;
     display: grid;
     align-items: center;
-    grid-template-columns: 33% 22% 45%;
+    grid-template-columns: 60% 40%;
     padding: 15px;
     color: rgba(255, 255, 255, 0.556);
     margin-bottom: 25px;
@@ -866,7 +871,7 @@ body.no-scroll {
 }
 
 #user-profile-info svg {
-    height: 55px;
+    font-size: 55px;
 }
 
 #user-stats {
@@ -875,8 +880,7 @@ body.no-scroll {
     flex-direction: column;
     justify-content: center;
     row-gap: 15px;
-    padding: 0px 20px;
-    border-right: 6px solid rgba(255, 255, 255, 0.21);
+    padding-left: 80px;
     font-size: 15px;
 }
 
@@ -1177,7 +1181,7 @@ body.no-scroll {
     }
 
     #test-data h1 {
-        font-size: 37px;
+        font-size: 33px;
     }
 
     #test-data p {
@@ -1205,6 +1209,20 @@ body.no-scroll {
     }
 
     /* USER-PROFILE */
+
+    #profile-details{
+        display: flex;
+    }
+    
+    #user-profile-info{
+        border: 0;
+        width: 100%;
+        justify-content: start;
+    }
+
+    #user-stats{
+        display: none;
+    }
 
     #user-profile-container{
         padding: 13px;
@@ -1295,29 +1313,6 @@ body.no-scroll {
     /* USER-LIST */
     #user-info {
         font-size: 15.36px;
-    }
-
-    /* USER-PROFILE */
-
-    #profile-details {
-        display: flex;
-        flex-direction: column;
-        row-gap: 30px;
-        padding: 20px;
-    }
-
-    #user-profile-info {
-        border: 0;
-    }
-
-    #user-stats {
-        flex-direction: row;
-        border: 0px;
-        column-gap: 30px;
-    }
-
-    #user-stats .value {
-        text-align: center;
     }
 }
 
@@ -1485,6 +1480,14 @@ body.no-scroll {
     }
 
     /* USER-PROFILE */
+
+    #user-profile-info{
+        font-size: 15px;
+    }
+
+    #user-profile-info svg{
+        font-size: 40px;
+    }
 
     .favourite-test-item,
     .favourite-user-item {

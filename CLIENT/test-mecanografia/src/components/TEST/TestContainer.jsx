@@ -74,7 +74,6 @@ export const TestContainer = () => {
             time: 0
         })
 
-        inputRef.current.focus()
     }
 
     useEffect(() => {        
@@ -96,8 +95,7 @@ export const TestContainer = () => {
             time: 0
         })
 
-        inputRef.current.focus()
-    }, [cid, next])
+    }, [cid, next, words, time])
 
     useEffect(() => {
         if (cid == "time") {
@@ -137,10 +135,10 @@ export const TestContainer = () => {
     }, [seconds, minutes, isStarted, time]);
 
     useEffect(() => {
-        inputRef.current.focus()
         if (tid) {
-            Axios.get(`https://test-mecanografia-1.onrender.com/api/tests/${tid}`)
-                .then(res => {
+            setLoading(true)
+            Axios.get(`http://localhost:8080/api/tests/${tid}`)
+            .then(res => {
                     setTest({
                         ...res.data,
                         text_length: res.data.text.length
@@ -161,7 +159,7 @@ export const TestContainer = () => {
             setText(text)
             setMinutes(0)
             setSeconds(0)
-        }else if(cid == "time"){
+        } else if (cid == "time"){
             time > 59? (setMinutes(time / 60), setSeconds(0)) : (setSeconds(time), setMinutes(0))
             const text = []
             for (let i = 0; i < (time * 1.5); i++) {
@@ -169,12 +167,11 @@ export const TestContainer = () => {
                 do {
                     word = faker.word.noun();
                 } while (text.includes(word));
-
+                
                 text.push(word)
             }
             setText(text)
         }
-
     }, [tid, cid, next, time, words])
 
     const className = (word_index, charIndex) => {
@@ -276,7 +273,7 @@ export const TestContainer = () => {
         if ((results.time.minutes > 0 || results.time.seconds > 0) && tid) {
             const completed_test = test
             completed_test.results = results
-            Axios.put("https://test-mecanografia-1.onrender.com/api/users/completed-test", completed_test)
+            Axios.put("http://localhost:8080/api/users/completed-test", completed_test)
         }
     }, [results])
 

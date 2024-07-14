@@ -37,9 +37,9 @@ export const MainContainer = () => {
             setIsLoading(true)
             try {
                 const [loggedUserResponse, usersResponse, testsResponse] = await Promise.all([
-                    Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user"),
-                    Axios.get("https://test-mecanografia-1.onrender.com/api/users"),
-                    Axios.get("https://test-mecanografia-1.onrender.com/api/tests")
+                    Axios.get("http://localhost:8080/api/users/logged-user"),
+                    Axios.get("http://localhost:8080/api/users"),
+                    Axios.get("http://localhost:8080/api/tests")
                 ]);
                 console.log(loggedUserResponse.data.favourite_tests);
                 setUser(loggedUserResponse.data);
