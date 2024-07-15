@@ -273,7 +273,14 @@ export const TestContainer = () => {
         if ((results.time.minutes > 0 || results.time.seconds > 0) && tid) {
             const completed_test = test
             completed_test.results = results
-            Axios.put("https://test-mecanografia-1.onrender.com/api/users/completed-test", completed_test)
+            Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
+            .then(res => {
+                return res.data
+            })
+            .then(user => {
+                console.log(user.username, test.owner);
+                user.username != test.owner && Axios.put("https://test-mecanografia-1.onrender.com/api/users/completed-test", completed_test)
+            })
         }
     }, [results])
 

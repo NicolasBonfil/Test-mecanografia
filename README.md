@@ -6,9 +6,9 @@ Con [***KEYSPEED***](https://keyspeed.netlify.app/) vas poder medir cuantas **Pa
 
 ## Tests
 
-Al iniciar sesión en la sección de ***TESTS***, podes encontrar diefentes **textos creados por todos los usuarios** en la pagina. O podes crear el tuyo **publico o privado** en la sección ***CREATE***, para poder **practicar tus propios textos** y que mas **usuarios puedan completar tus tests**. En la parte de ***COMPLETED***, vas a encontrar **todos los tests que completaste**.
+Al iniciar sesión en la sección de ***TESTS***, podes encontrar diefentes **textos creados por todos los usuarios** en la pagina. O podes crear el tuyo **publico o privado** en la sección ***CREATE***, para poder **practicar tus propios textos** y que mas **usuarios puedan completar tus tests**.
 
-![]() ![]() ![]()
+![]() ![]()
 
 ## Random tests
 
@@ -28,7 +28,7 @@ Con un **temporizador en cuenta regresiva**, vas a poder elegir cuanto tiempo qu
 
 ## Perfil
 
-Desde le sección ***SEARCH USER***, va a ser posible encontrar el **perfil del usuario** que desees para poder ver sus **textos creados** y sus **tests y usuarios favoritos**.
+Desde le sección ***SEARCH USER***, va a ser posible encontrar el **perfil del usuario** que desees para poder ver sus **textos creados** además de sus **tests y usuarios favoritos**.
 
 ![]()
 
