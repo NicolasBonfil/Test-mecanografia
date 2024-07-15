@@ -12,6 +12,7 @@ export const UserListContainer = () => {
     const {username, setUsername} = useMenuContext()
 
     useEffect(() => {
+        setLoading(true)
         Axios.get("https://test-mecanografia-1.onrender.com/api/users")
             .then(res => {
                 return res.data

@@ -298,12 +298,9 @@ export const TestContainer = () => {
                 seconds: seconds
             }
         })
-
-        inputRef.current.blur()
     }
 
     const inputRef = useRef(null)
-
 
     return (
         <>
