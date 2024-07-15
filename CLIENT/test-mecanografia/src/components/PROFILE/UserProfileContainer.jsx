@@ -3,7 +3,6 @@ import Axios from "axios"
 import { UserProfileDetail } from './UserProfileDetail.jsx'
 import { useParams } from 'react-router-dom'
 import { Loading } from '../Loading.jsx'
-import { HeaderContainer } from '../HEADER/HeaderContainer.jsx'
 
 export const UserProfileContainer = () => {
     const [profileUser, setPorfileUser] = useState({
@@ -23,34 +22,37 @@ export const UserProfileContainer = () => {
                 return res.data
             })
             .then(user => {
-                let user_texts = []
-                user.texts.forEach(t => {
-                    user_texts.push(t.test)
+                Axios.get(`https://test-mecanografia-1.onrender.com/api/users/logged-user`)
+                .then(res => {
+                    let user_texts = []
+                    user.texts.forEach(t => {
+                        user_texts.push(t.test)
+                    })
+    
+                    if (user.username != res.data.username) {
+                        user_texts = user_texts.filter(text => text.state != "Private")
+                    }
+    
+                    let favourite_tests = []
+                    let favourite_users = []
+    
+                    user.favourite_tests.forEach(t => {
+                        favourite_tests.push(t.test)
+                    })
+    
+                    user.favourite_users.forEach(u => {
+                        favourite_users.push(u.user)
+                    })
+    
+                    setPorfileUser({
+                        ...user,
+                        texts: user_texts,
+                        favourite_tests: favourite_tests,
+                        favourite_users: favourite_users
+                    })
                 })
-
-                if (user.username != user.username) {
-                    user_texts = user_texts.filter(text => text.state != "Private")
-                }
-
-                let favourite_tests = []
-                let favourite_users = []
-
-                user.favourite_tests.forEach(t => {
-                    favourite_tests.push(t.test)
-                })
-
-                user.favourite_users.forEach(u => {
-                    favourite_users.push(u.user)
-                })
-
-                setPorfileUser({
-                    ...user,
-                    texts: user_texts,
-                    favourite_tests: favourite_tests,
-                    favourite_users: favourite_users
-                })
+                .finally(() => setLoading(false))
             })
-            .finally(() => setLoading(false))
     }, [uid])
 
     return (
