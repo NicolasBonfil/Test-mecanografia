@@ -7,11 +7,11 @@ import { useRandomContext } from "../../Context/RandomContext.jsx"
 import { Loading } from '../Loading.jsx';
 
 export const TestContainer = () => {
-    const {tid, cid} = useParams()
+    const { tid, cid } = useParams()
 
     const [loading, setLoading] = useState(false)
 
-    const {time, setTime, words, setWords} = useRandomContext()
+    const { time, setTime, words, setWords } = useRandomContext()
 
     const [seconds, setSeconds] = useState(0);
     const [minutes, setMinutes] = useState(0);
@@ -43,19 +43,19 @@ export const TestContainer = () => {
             seconds: 0
         }
     })
-    
+
     const [test, setTest] = useState({
         title: "",
         text_length: 0,
         owner: "",
         date: ""
     })
-    
+
     const [next, setNext] = useState(false)
     const restart = () => {
-        cid == "time"? time > 59? (setMinutes(time / 60), setSeconds(0)) : (setSeconds(time), setMinutes(0)) : (setMinutes(0), setSeconds(0))
+        cid == "time" ? time > 59 ? (setMinutes(time / 60), setSeconds(0)) : (setSeconds(time), setMinutes(0)) : (setMinutes(0), setSeconds(0))
 
-        
+
         setIsStarted(false)
         setIsFinished(false)
         setWordIndex(0)
@@ -76,7 +76,7 @@ export const TestContainer = () => {
 
     }
 
-    useEffect(() => {        
+    useEffect(() => {
         setIsStarted(false)
         setIsFinished(false)
         setWordIndex(0)
@@ -108,10 +108,10 @@ export const TestContainer = () => {
                         setMinutes(minutes => minutes - 1);
                     }
 
-                    if(seconds === 0 && minutes === 0){
+                    if (seconds === 0 && minutes === 0) {
                         setIsStarted(false)
                         setIsFinished(true)
-                        time > 59? (setMinutes(time / 60), setSeconds(0)) : (setSeconds(time), setMinutes(0))
+                        time > 59 ? (setMinutes(time / 60), setSeconds(0)) : (setSeconds(time), setMinutes(0))
                     }
                 }, 1000);
 
@@ -138,7 +138,7 @@ export const TestContainer = () => {
         if (tid) {
             setLoading(true)
             Axios.get(`https://test-mecanografia-1.onrender.com/api/tests/${tid}`)
-            .then(res => {
+                .then(res => {
                     setTest({
                         ...res.data,
                         text_length: res.data.text.length
@@ -159,15 +159,15 @@ export const TestContainer = () => {
             setText(text)
             setMinutes(0)
             setSeconds(0)
-        } else if (cid == "time"){
-            time > 59? (setMinutes(time / 60), setSeconds(0)) : (setSeconds(time), setMinutes(0))
+        } else if (cid == "time") {
+            time > 59 ? (setMinutes(time / 60), setSeconds(0)) : (setSeconds(time), setMinutes(0))
             const text = []
             for (let i = 0; i < (time * 1.5); i++) {
                 let word;
                 do {
                     word = faker.word.noun();
                 } while (text.includes(word));
-                
+
                 text.push(word)
             }
             setText(text)
@@ -305,14 +305,12 @@ export const TestContainer = () => {
     return (
         <>
             {
-                loading?
-                    <Loading/>
-                :
+                loading ?
+                    <Loading />
+                    :
                     <>
                         <div id='test-container'>
-                            <div id='test-detail' onClick={() => {
-                                inputRef.current && inputRef.current.focus()
-                            }}>
+                            <div id='test-detail'>
                                 <div className='test-filter'>
                                     {
                                         cid == "words" && !isFinished &&
@@ -340,7 +338,11 @@ export const TestContainer = () => {
                                     }
 
                                 </div>
-                                <TestDetail setNext={setNext} restart={restart} words={words} tid={tid} cid={cid} test={test} text={text} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} extraChars={extraChars} wordIndex={wordIndex} className={className} results={results} isFinished={isFinished} minutes={minutes} seconds={seconds} />
+                                <div onClick={() => {
+                                    inputRef.current && inputRef.current.focus()
+                                }}>
+                                    <TestDetail setNext={setNext} restart={restart} words={words} tid={tid} cid={cid} test={test} text={text} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} extraChars={extraChars} wordIndex={wordIndex} className={className} results={results} isFinished={isFinished} minutes={minutes} seconds={seconds} />
+                                </div>
                             </div>
                         </div>
                     </>
