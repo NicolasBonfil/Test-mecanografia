@@ -73,7 +73,7 @@ export const TestContainer = () => {
             accuracy: 0,
             time: 0
         })
-
+        inputRef.current.focus()
     }
 
     useEffect(() => {
@@ -278,8 +278,7 @@ export const TestContainer = () => {
                 return res.data
             })
             .then(user => {
-                console.log(user.username, test.owner);
-                user.username != test.owner && Axios.put("https://test-mecanografia-1.onrender.com/api/users/completed-test", completed_test)
+                user.username != test.owner.username && Axios.put("https://test-mecanografia-1.onrender.com/api/users/completed-test", completed_test)
             })
         }
     }, [results])
