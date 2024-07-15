@@ -311,34 +311,36 @@ export const TestContainer = () => {
                     <>
                         <div id='test-container'>
                             <div id='test-detail'>
-                                <div className='test-filter'>
-                                    {
-                                        cid == "words" && !isFinished &&
-                                        <>
-                                            <p>Words</p>
-                                            <select value={words} onChange={(e) => setWords(e.target.value)}>
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="75">75</option>
-                                            </select>
-                                        </>
-                                    }
-                                    {
-                                        cid == "time" && !isFinished &&
-                                        <>
-                                            <p>TIme</p>
-                                            <select value={time} onChange={(e) => setTime(e.target.value)}>
-                                                <option value="15">15''</option>
-                                                <option value="30">30''</option>
-                                                <option value="60">60''</option>
-                                                <option value="120">120''</option>
-                                            </select>
-                                        </>
-                                    }
-
-                                </div>
-                                <div style={{width: "100%", height: "100%"}} onClick={() => {
+                                {
+                                    cid &&
+                                    <div className='test-filter'>
+                                        {
+                                            cid == "words" && !isFinished &&
+                                            <>
+                                                <p>Words</p>
+                                                <select value={words} onChange={(e) => setWords(e.target.value)}>
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="75">75</option>
+                                                </select>
+                                            </>
+                                        }
+                                        {
+                                            cid == "time" && !isFinished &&
+                                            <>
+                                                <p>TIme</p>
+                                                <select value={time} onChange={(e) => setTime(e.target.value)}>
+                                                    <option value="15">15''</option>
+                                                    <option value="30">30''</option>
+                                                    <option value="60">60''</option>
+                                                    <option value="120">120''</option>
+                                                </select>
+                                            </>
+                                        }
+                                    </div>
+                                }
+                                <div style={{width: "100%", height: "100%", display: "flew", flexDirection: "column", alignItems: "center", justifyContent: "center"}} onClick={() => {
                                     inputRef.current && inputRef.current.focus()
                                 }}>
                                     <TestDetail setNext={setNext} restart={restart} words={words} tid={tid} cid={cid} test={test} text={text} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} extraChars={extraChars} wordIndex={wordIndex} className={className} results={results} isFinished={isFinished} minutes={minutes} seconds={seconds}/>
