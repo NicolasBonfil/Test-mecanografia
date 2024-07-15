@@ -772,6 +772,7 @@ body.no-scroll {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
     border: 2.5px solid black;
+    cursor: text;
 }
 
 #user-input {
