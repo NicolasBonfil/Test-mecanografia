@@ -27,7 +27,7 @@ export const LoginContainer = () => {
             withCredentials: true
         })
             .then(res => {
-                if(res.status == 200){
+                if (res.status == 200) {
                     navigate("/")
                 }
             })
@@ -39,7 +39,7 @@ export const LoginContainer = () => {
                 for (const [key, value] of Object.entries(formData)) {
                     !value && (errors[key] = message)
                 }
-                
+
                 key && (errors[key] = message)
                 Object.keys(errors).length < 1 && !key && (errors.error = message)
 
@@ -55,7 +55,7 @@ export const LoginContainer = () => {
                 <div id="responsive-logo">
                     <img src="./logo.png" alt="" />
                 </div>
-                
+
                 <div id='login-form-container'>
                     <div id='login-header'>
                         <h1>login</h1>
@@ -69,8 +69,14 @@ export const LoginContainer = () => {
                         </div>
                         <div className='login-input'>
                             <label>Contraseña</label>
-                            <input type={showPass? "text":"password"} name='password' onChange={handleOnChange} value={formData.password} autoComplete='off'/>
-                            {!showPass? <FontAwesomeIcon icon={faEye} onClick={() => setShowPass(true)}/> : <FontAwesomeIcon icon={faEyeSlash} onClick={() => setShowPass(false)}/>}
+                            <input type={showPass ? "text" : "password"} name='password' onChange={handleOnChange} value={formData.password} autoComplete='off' style={{
+                                userSelect: 'none',
+                                WebkitUserSelect: 'none',
+                                MozUserSelect: 'none',
+                                msUserSelect: 'none'
+                            }} />
+                            
+                            {!showPass ? <FontAwesomeIcon icon={faEye} onClick={() => setShowPass(true)} /> : <FontAwesomeIcon icon={faEyeSlash} onClick={() => setShowPass(false)} />}
                             {errors.password && <p className='error-message'>{errors.password}</p>}
                             {errors.error && <p className='error-message'>{errors.error}</p>}
                         </div>

@@ -10,7 +10,7 @@
     font-family: "Quicksand", "sans-serif";
 }
 
-#root{
+#root {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -19,7 +19,7 @@
     background-color: rgb(60, 60, 60);
 }
 
-#app-detail{
+#app-detail {
     display: flex;
     flex-direction: column;
     /* flex-grow: 1; */
@@ -113,11 +113,11 @@
     padding: 25px;
 }
 
-#responsive-logo{
+#responsive-logo {
     display: none;
 }
 
-#responsive-logo img{
+#responsive-logo img {
     max-height: 100%;
     width: auto;
 }
@@ -194,7 +194,8 @@
     row-gap: 5px;
 }
 
-#login-logo img, #signup-logo img{
+#login-logo img,
+#signup-logo img {
     height: 25%;
 }
 
@@ -210,7 +211,7 @@ header {
     margin-bottom: 25px;
 }
 
-#logo-container{
+#logo-container {
     height: 95%;
     display: flex;
     align-items: center;
@@ -227,7 +228,7 @@ header {
     height: 100%;
 }
 
-#logo-container img{
+#logo-container img {
     max-height: 100%;
     width: auto;
 }
@@ -312,7 +313,7 @@ header {
     display: none;
 }
 
-#hamburger-menu-icon svg{
+#hamburger-menu-icon svg {
     font-size: 20px;
 }
 
@@ -363,7 +364,7 @@ body.no-scroll {
     justify-content: center;
 }
 
-#hamburger-nav-tab ul{
+#hamburger-nav-tab ul {
     display: flex;
     flex-direction: column;
     row-gap: 9px;
@@ -381,7 +382,7 @@ body.no-scroll {
     height: 35px;
 }
 
-.nav-btn a{
+.nav-btn a {
     color: #9d6f0b;
     text-decoration: none;
     font-size: 18px;
@@ -393,7 +394,10 @@ body.no-scroll {
     border-radius: 5px;
 }
 
-.btn-active, .nav-btn:hover, .nav-btn:hover a, .btn-active a{
+.btn-active,
+.nav-btn:hover,
+.nav-btn:hover a,
+.btn-active a {
     background-color: #9d6f0b;
     color: rgb(45, 45, 45) !important;
 }
@@ -777,6 +781,11 @@ body.no-scroll {
     background-color: transparent;
     color: transparent;
     border: 0px;
+    resize: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 #user-input:focus {
@@ -991,12 +1000,12 @@ body.no-scroll {
         align-items: center;
     }
 
-    #logo-container{
+    #logo-container {
         justify-content: center;
         width: 50%;
     }
 
-    #user-button{
+    #user-button {
         width: 25%;
     }
 
@@ -1004,7 +1013,7 @@ body.no-scroll {
         width: 121px;
     }
 
-    #username{
+    #username {
         font-size: 15px;
     }
 
@@ -1028,26 +1037,28 @@ body.no-scroll {
     }
 
     /* LOGIN // SIGNUP */
-    
+
     #login-logo,
     #signup-logo {
         display: none;
     }
-    
-    #login-detail, #signup-detail{
+
+    #login-detail,
+    #signup-detail {
         width: 100%;
         padding: 4.5% 0% 5% 0%;
         row-gap: 6%;
     }
-    
-    #responsive-logo{
+
+    #responsive-logo {
         display: flex;
         height: 9%;
         width: 100%;
         justify-content: center;
     }
 
-    #login-form-container, #signup-form-container{
+    #login-form-container,
+    #signup-form-container {
         flex-grow: 1;
         overflow: hidden;
         padding: 0px;
@@ -1056,11 +1067,13 @@ body.no-scroll {
         background-color: rgb(255, 255, 255);
     }
 
-    #login-form, #signup-form{
+    #login-form,
+    #signup-form {
         margin-bottom: 38px;
     }
 
-    .login-input svg, .signup-input svg{
+    .login-input svg,
+    .signup-input svg {
         top: 45%;
         font-size: 14.5px;
     }
@@ -1071,7 +1084,7 @@ body.no-scroll {
     }
 
     .login-input label,
-    .signup-input label{
+    .signup-input label {
         font-size: 13px;
     }
 
@@ -1080,12 +1093,13 @@ body.no-scroll {
         padding: 3px;
     }
 
-    .submit-btn:hover{
+    .submit-btn:hover {
         background-color: #be8c1f9a;
         color: white;
     }
-    
-    #login-header, #signup-header{
+
+    #login-header,
+    #signup-header {
         display: none;
     }
 
@@ -1129,7 +1143,7 @@ body.no-scroll {
 
     /* USER-LIST */
 
-    .username-filter{
+    .username-filter {
         display: flex;
         align-items: center;
         column-gap: 10px;
@@ -1139,7 +1153,7 @@ body.no-scroll {
         font-weight: 500;
     }
 
-    .username-filter input{
+    .username-filter input {
         border: 0px;
         background-color: transparent;
         border-bottom: 1px solid #BE8B1F;
@@ -1148,7 +1162,7 @@ body.no-scroll {
         font-size: 15px;
     }
 
-    .username-filter input:focus{
+    .username-filter input:focus {
         outline: none;
     }
 
@@ -1210,21 +1224,21 @@ body.no-scroll {
 
     /* USER-PROFILE */
 
-    #profile-details{
+    #profile-details {
         display: flex;
     }
-    
-    #user-profile-info{
+
+    #user-profile-info {
         border: 0;
         width: 100%;
         justify-content: start;
     }
 
-    #user-stats{
+    #user-stats {
         display: none;
     }
 
-    #user-profile-container{
+    #user-profile-container {
         padding: 13px;
     }
 
@@ -1268,24 +1282,28 @@ body.no-scroll {
 @media (max-width: 870px) {
     /* LOGIN // SIGNUP */
 
-    #login-form-container, #signup-form-container{
+    #login-form-container,
+    #signup-form-container {
         width: 62%;
     }
 
-    #login-form-container p, #signup-form-container p{
+    #login-form-container p,
+    #signup-form-container p {
         font-size: 13px;
     }
 
-    #login-form, #signup-form{
+    #login-form,
+    #signup-form {
         row-gap: 15px;
         margin-bottom: 32px;
     }
 
-    #responsive-logo{
+    #responsive-logo {
         height: 9%;
     }
 
-    #login-detail, #signup-detail{
+    #login-detail,
+    #signup-detail {
         padding-top: 5.5%;
         margin-bottom: 10%;
     }
@@ -1376,12 +1394,12 @@ body.no-scroll {
     /* TEST-LIST // USER-LIST */
 
     #test-info,
-    #user-info{
+    #user-info {
         width: 88%;
     }
 
     .test-item,
-    .user-item{
+    .user-item {
         grid-template-columns: 88% 12%;
     }
 
@@ -1395,7 +1413,7 @@ body.no-scroll {
         display: none;
     }
 
-    .user-item-link{
+    .user-item-link {
         font-size: 14px;
         grid-template-columns: 100%;
     }
@@ -1433,11 +1451,13 @@ body.no-scroll {
 @media (max-width: 590px) {
     /* LOGIN // SIGNUP */
 
-    #login-form-container, #signup-form-container{
+    #login-form-container,
+    #signup-form-container {
         width: 75%;
     }
 
-    #login-form, #signup-form{
+    #login-form,
+    #signup-form {
         row-gap: 35px;
         margin-bottom: 50px;
     }
@@ -1449,20 +1469,21 @@ body.no-scroll {
     }
 
     .login-input svg,
-    .signup-input svg{
+    .signup-input svg {
         top: 70%;
     }
 
     .login-input label,
-    .signup-input label{
+    .signup-input label {
         font-size: 12px;
     }
 
-    #responsive-logo{
+    #responsive-logo {
         height: 8.8%;
     }
 
-    #login-detail, #signup-detail{
+    #login-detail,
+    #signup-detail {
         padding-top: 7.5%;
         padding-bottom: 10.5%;
     }
@@ -1470,22 +1491,22 @@ body.no-scroll {
     /* TEST-LIST // USER-LIST */
 
     #test-info,
-    #user-info{
+    #user-info {
         width: 86%;
     }
 
     .test-item,
-    .user-item{
+    .user-item {
         grid-template-columns: 85% 15%;
     }
 
     /* USER-PROFILE */
 
-    #user-profile-info{
+    #user-profile-info {
         font-size: 15px;
     }
 
-    #user-profile-info svg{
+    #user-profile-info svg {
         font-size: 40px;
     }
 

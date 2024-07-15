@@ -19,7 +19,7 @@ export const SignupContainer = () => {
         setErrors({})
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value       
+            [e.target.name]: e.target.value
         })
     }
 
@@ -27,24 +27,24 @@ export const SignupContainer = () => {
 
     const register = () => {
         Axios.post("https://test-mecanografia-1.onrender.com/api/sessions/register", formData)
-        .then((res) => {
-            res.status == 200 && navigate("/login")
-        })
-        .catch(error => {
-            const key = error.response.data.payload
-            const message = error.response.data.message
+            .then((res) => {
+                res.status == 200 && navigate("/login")
+            })
+            .catch(error => {
+                const key = error.response.data.payload
+                const message = error.response.data.message
 
-            const errors ={}
-            for(const [key, value] of Object.entries(formData)){
-                !value && (errors[key] = message)
-            }
+                const errors = {}
+                for (const [key, value] of Object.entries(formData)) {
+                    !value && (errors[key] = message)
+                }
 
-            key && (errors[key] = message)
+                key && (errors[key] = message)
 
-            Object.keys(errors).length < 1 && !key && (errors.error = message)
+                Object.keys(errors).length < 1 && !key && (errors.error = message)
 
-            setErrors(errors)
-        })
+                setErrors(errors)
+            })
     }
 
     const [showPass, setShowPass] = useState(false)
@@ -59,7 +59,7 @@ export const SignupContainer = () => {
                 <div id="responsive-logo">
                     <img src="./logo.png" alt="" />
                 </div>
-                
+
                 <div id='signup-form-container'>
                     <div id='signup-header'>
                         <h1>register</h1>
@@ -67,25 +67,35 @@ export const SignupContainer = () => {
                     <form id='signup-form'>
                         <div className='signup-input'>
                             <label>Nombre de Usuario</label>
-                            <input type="text" name='username' onChange={handleOnChange} value={formData.username} autoComplete='off' onKeyDown={(e) => e.key === ' ' && e.preventDefault()}/>
+                            <input type="text" name='username' onChange={handleOnChange} value={formData.username} autoComplete='off' onKeyDown={(e) => e.key === ' ' && e.preventDefault()} />
                             {errors.username && <p className='error-message'>{errors.username}</p>}
                         </div>
                         <div className='signup-input'>
                             <label>Correo</label>
-                            <input type="text" name='email' onChange={handleOnChange} value={formData.email} autoComplete='off'/>
+                            <input type="text" name='email' onChange={handleOnChange} value={formData.email} autoComplete='off' />
                             {errors.email && <p className='error-message'>{errors.email}</p>}
                         </div>
                         <div className='signup-input'>
                             <label>Contraseña</label>
-                            <input type={showPass? "text":"password"} name='password' onChange={handleOnChange} value={formData.password} autoComplete='off'/>
-                            {!showPass? <FontAwesomeIcon icon={faEye} onClick={() => setShowPass(true)}/> : <FontAwesomeIcon icon={faEyeSlash} onClick={() => setShowPass(false)}/>}
+                            <input type={showPass ? "text" : "password"} name='password' onChange={handleOnChange} value={formData.password} autoComplete='off' style={{
+                                userSelect: 'none',
+                                WebkitUserSelect: 'none',
+                                MozUserSelect: 'none',
+                                msUserSelect: 'none'
+                            }} />
+                            {!showPass ? <FontAwesomeIcon icon={faEye} onClick={() => setShowPass(true)} /> : <FontAwesomeIcon icon={faEyeSlash} onClick={() => setShowPass(false)} />}
                             {errors.password && <p className='error-message'>{errors.password}</p>}
 
                         </div>
                         <div className='signup-input'>
                             <label>Confirmar Contraseña</label>
-                            <input type={showPassConfirm? "text":"password"} name='password_confirmation' onChange={handleOnChange} value={formData.password_confirmation} autoComplete='off'/>
-                            {!showPassConfirm? <FontAwesomeIcon icon={faEye} onClick={() => setShowPassConfirm(true)}/> : <FontAwesomeIcon icon={faEyeSlash} onClick={() => setShowPassConfirm(false)}/>}
+                            <input type={showPassConfirm ? "text" : "password"} name='password_confirmation' onChange={handleOnChange} value={formData.password_confirmation} autoComplete='off' style={{
+                                userSelect: 'none',
+                                WebkitUserSelect: 'none',
+                                MozUserSelect: 'none',
+                                msUserSelect: 'none'
+                            }} />
+                            {!showPassConfirm ? <FontAwesomeIcon icon={faEye} onClick={() => setShowPassConfirm(true)} /> : <FontAwesomeIcon icon={faEyeSlash} onClick={() => setShowPassConfirm(false)} />}
                             {errors.password_confirmation && <p className='error-message'>{errors.password_confirmation}</p>}
                             {errors.error && <p className='error-message'>{errors.error}</p>}
                         </div>

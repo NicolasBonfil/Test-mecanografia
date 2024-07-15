@@ -316,7 +316,7 @@ export const TestContainer = () => {
                             <div id='test-detail'>
                                 <div className='test-filter'>
                                     {
-                                        cid == "words" &&
+                                        cid == "words" && !isFinished &&
                                         <>
                                             <p>Words</p>
                                             <select value={words} onChange={(e) => setWords(e.target.value)}>
@@ -328,7 +328,7 @@ export const TestContainer = () => {
                                         </>
                                     }
                                     {
-                                        cid == "time" &&
+                                        cid == "time" && !isFinished &&
                                         <>
                                             <p>TIme</p>
                                             <select value={time} onChange={(e) => setTime(e.target.value)}>

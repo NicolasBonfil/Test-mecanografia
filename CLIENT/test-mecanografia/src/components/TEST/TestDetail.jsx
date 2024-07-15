@@ -33,7 +33,7 @@ export const TestDetail = ({setNext, restart, words, tid, cid, test, text, handl
 
 
             <div id="text-container">
-                <TextContainer handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} text={text} extraChars={extraChars} wordIndex={wordIndex} className={className} />
+                <TextContainer isFinished={isFinished} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} text={text} extraChars={extraChars} wordIndex={wordIndex} className={className} />
             </div>
 
             {
