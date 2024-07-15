@@ -9,7 +9,7 @@ export const TextContainer = ({isFinished, handleOnChange, userInput, inputRef, 
         <>  
             {
                 !isFinished &&
-                <textarea readOnly id="user-input" type="text" onChange={handleOnChange} value={userInput} autoComplete='off' ref={inputRef} />
+                <textarea id="user-input" type="text" onChange={handleOnChange} value={userInput} autoComplete='off' ref={inputRef} />
             }
 
             {

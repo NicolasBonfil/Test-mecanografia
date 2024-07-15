@@ -782,6 +782,7 @@ body.no-scroll {
     color: transparent;
     border: 0px;
     resize: none;
+    pointer-events: none;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
