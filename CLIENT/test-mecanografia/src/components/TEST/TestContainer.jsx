@@ -338,11 +338,9 @@ export const TestContainer = () => {
                                     }
 
                                 </div>
-                                <div onClick={() => {
+                                <TestDetail setNext={setNext} restart={restart} words={words} tid={tid} cid={cid} test={test} text={text} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} extraChars={extraChars} wordIndex={wordIndex} className={className} results={results} isFinished={isFinished} minutes={minutes} seconds={seconds} onClick={() => {
                                     inputRef.current && inputRef.current.focus()
-                                }}>
-                                    <TestDetail setNext={setNext} restart={restart} words={words} tid={tid} cid={cid} test={test} text={text} handleOnChange={handleOnChange} userInput={userInput} inputRef={inputRef} extraChars={extraChars} wordIndex={wordIndex} className={className} results={results} isFinished={isFinished} minutes={minutes} seconds={seconds} />
-                                </div>
+                                }}/>
                             </div>
                         </div>
                     </>
