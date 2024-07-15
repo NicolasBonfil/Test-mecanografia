@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 
     for(let key in formData){
         if (!formData[key]) {
-            return res.status(400).send({message: "Este campo es obligatorio."})
+            return res.status(400).send({message: "Completa este campo."})
         }
     }
     const owner = req.user._id

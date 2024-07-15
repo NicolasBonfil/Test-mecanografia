@@ -10,7 +10,7 @@ router.post("/login", async (req, res) => {
 
     for (let key in req.body) {
         if (!req.body[key]) {
-            return res.status(400).send({ message: "Este campo es obligatorio" })
+            return res.status(400).send({ message: "Completa este campo" })
         }
     }
 
@@ -71,7 +71,7 @@ router.post("/register", async (req, res) => {
     if (userExists) return res.status(400).send({ message: "Ya existe una cuenta con el mismo correo electrónico", payload: "email" })
 
     const isSafePassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/.test(password);
-    if (!isSafePassword) return res.status(400).send({ message: "La contraseña debe contener al menos: 8 caracteres, una mayusucula, una minusucula, un numero y un caracter especial (@, #, $, etc)", payload: "password" })
+    if (!isSafePassword) return res.status(400).send({ message: "La contraseña debe contener al menos: 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial (@, #, $, etc)", payload: "password" })
 
     if (password !== password_confirmation) return res.status(400).send({ message: "Las contraseñas no coinciden", payload: "password_confirmation" })
 

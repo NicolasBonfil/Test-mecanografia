@@ -310,7 +310,9 @@ export const TestContainer = () => {
                 :
                     <>
                         <div id='test-container'>
-                            <div id='test-detail'>
+                            <div id='test-detail' onClick={() => {
+                                inputRef.current && inputRef.current.focus()
+                            }}>
                                 <div className='test-filter'>
                                     {
                                         cid == "words" && !isFinished &&
