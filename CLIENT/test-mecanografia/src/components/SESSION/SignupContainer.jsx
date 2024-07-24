@@ -31,7 +31,6 @@ export const SignupContainer = () => {
                 res.status == 200 && navigate("/login")
             })
             .catch(error => {
-                const key = error.response.data.payload
                 const message = error.response.data.message
 
                 const errors = {}
@@ -39,10 +38,7 @@ export const SignupContainer = () => {
                     !value && (errors[key] = message)
                 }
 
-                key && (errors[key] = message)
-
-                Object.keys(errors).length < 1 && !key && (errors.error = message)
-
+                Object.keys(errors).length < 1 && (errors.error = message)
                 setErrors(errors)
             })
     }

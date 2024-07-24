@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 import { TestInfo } from './TestInfo.jsx'
 export const TestDetail = ({setNext, restart, words, tid, cid, test, text, handleOnChange, userInput, inputRef, extraChars, wordIndex, className, results, isFinished, minutes, seconds}) => {
+    console.log(cid);
     return (
         <>
             {
@@ -25,7 +26,7 @@ export const TestDetail = ({setNext, restart, words, tid, cid, test, text, handl
             }
 
             {
-                !isFinished && cid && cid != "words" &&
+                !isFinished && cid != "words" &&
                 <div id='timer'>
                     <p>{minutes < 10 ? '0' + minutes : minutes} : {seconds < 10 ? '0' + seconds : seconds}</p>
                 </div>
