@@ -9,7 +9,7 @@ import { useMenuContext } from '../../Context/MenuContext.jsx'
 export const HeaderContainer = ({user}) => {
 	const navigate = useNavigate()
 	useEffect(() => {
-		Axios.get("http://localhost:8080/api/users/logged-user")
+		Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
 		.then(res => setUser(res.data))
 		.catch(error => {
 			// error.response.status === 401 && navigate("/login")
@@ -17,7 +17,7 @@ export const HeaderContainer = ({user}) => {
 	}, [])
 
     const logout = () => {
-        Axios.post("http://localhost:8080/api/sessions/logout")
+        Axios.post("https://test-mecanografia-1.onrender.com/api/sessions/logout")
         .then(res => {
             res.status == 200 && navigate("/login") 
         })

@@ -13,12 +13,12 @@ export const UserListContainer = () => {
 
     useEffect(() => {
         setLoading(true)
-        Axios.get("http://localhost:8080/api/users")
+        Axios.get("https://test-mecanografia-1.onrender.com/api/users")
             .then(res => {
                 return res.data
             })
             .then(allUsers => {
-                Axios.get("http://localhost:8080/api/users/logged-user")
+                Axios.get("https://test-mecanografia-1.onrender.com/api/users/logged-user")
                     .then(res => {
                         const user = res.data
 
@@ -47,7 +47,7 @@ export const UserListContainer = () => {
 
         setFavouriteUsers(favourite_users)
 
-        action == "add" ? Axios.put("http://localhost:8080/api/users/add-favourite/users", { id }) : Axios.put("http://localhost:8080/api/users/remove-favourite/users", { id })
+        action == "add" ? Axios.put("https://test-mecanografia-1.onrender.com/api/users/add-favourite/users", { id }) : Axios.put("https://test-mecanografia-1.onrender.com/api/users/remove-favourite/users", { id })
     }
 
     return (

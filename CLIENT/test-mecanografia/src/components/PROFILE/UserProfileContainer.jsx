@@ -17,12 +17,12 @@ export const UserProfileContainer = () => {
     const {uid} = useParams()
 
     useEffect(() => {
-        Axios.get(`http://localhost:8080/api/users/${uid}`)
+        Axios.get(`https://test-mecanografia-1.onrender.com/api/users/${uid}`)
             .then(res => {
                 return res.data
             })
             .then(user => {
-                Axios.get(`http://localhost:8080/api/users/logged-user`)
+                Axios.get(`https://test-mecanografia-1.onrender.com/api/users/logged-user`)
                 .then(res => {
                     let user_texts = []
                     user.texts.forEach(t => {
